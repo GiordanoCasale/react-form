@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 function App() {
-  const videoGames = [
+  const Games = [
     "The Legend of Zelda",
     "Super Mario Bros",
     "Final Fantasy VII",
@@ -13,14 +13,19 @@ function App() {
     "Dark Souls",
     "Half-Life"
   ];
-  //dichiaro una variabile per aggiungere un nuovo gioco all'array
 
+
+  //dichiaro una variabile per aggiungere un nuovo gioco all'array
+  const [videoGames, setVideoGames] = useState(Games)
   const [newGame, setNewGame] = useState("")
 
   //dichiaro una variabile per impedire il ricarimento della pagina
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log('Il gioco aggiunto è:' + newGame)
+  const addGame = e => {
+    e.preventDefault();
+    //variabile per far aggiornare correttamente la ui
+    const updatedVideoGames = [...videoGames, newGame];
+    setVideoGames(updatedVideoGames);
+    setNewGame("");//questo lo usiamo per ripulire il form
   }
 
   return (
@@ -33,7 +38,7 @@ function App() {
         ))}
       </ul>
 
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' onSubmit={addGame}>
         <input className='input' type="text" value={newGame} onChange={e => { setNewGame(e.target.value) }} />
         <button className='btn'>Aggiungi Gioco</button>
       </form>
