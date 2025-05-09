@@ -12,6 +12,11 @@ ul {
     margin-top: 20px;
 }
 
+ul li {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
 .container {
     max-width: 250px;
     margin: 0 auto;
@@ -35,4 +40,26 @@ ul {
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.remove-button {
+    margin-left: 20px;
+    border: none;
+    color: red;
+    cursor: pointer;
+    transition: transform 0.3 ease;
+}
+
+.btn:hover {
+    background-color: green;
+    color: white;
+}
+
+li:hover {
+    transform: scale(1.1);
+}
+
+.remove-button:hover {
+    transform: rotate(50deg);
 }

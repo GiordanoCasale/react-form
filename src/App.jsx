@@ -27,6 +27,13 @@ function App() {
     setVideoGames(updatedVideoGames);
     setNewGame("");//questo lo usiamo per ripulire il form
   }
+  //variabile per l'eliminazione di un elemento nell'array e la creazione del clone senza il suddetto elemento
+  const removeGame = i => {
+    const updatedGames = videoGames.filter((game, index) => {
+      return index !== i
+    });
+    setVideoGames(updatedGames);
+  }
 
   return (
     //vado a mettere il titolo e a ciclare l'array col metodo map
@@ -34,7 +41,12 @@ function App() {
       <h1>Lista Videogiochi</h1>
       <ul>
         {videoGames.map((game, index) => (
-          <li key={index}>{game}</li>
+          <li key={index}>
+            <span>{game}</span>
+            <button className='remove-button' onClick={() => removeGame(index)}>
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </li>
         ))}
       </ul>
 
